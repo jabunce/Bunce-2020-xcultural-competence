@@ -5,6 +5,8 @@ Bunce JA (2020). Sustaining Cultural Diversity Through Cross-Cultural Competence
 
 The original preprint is on SocArXiv [here](https://osf.io/preprints/socarxiv/bwtvu/)
 
+This is the analysis of the empirical data using item-response theory (IRT) models, corresponding to Figure 2A and Appendix Figures S17, S20, and S21.
+
 
 Steps to reproduce the analysis in this paper:
 
