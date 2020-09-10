@@ -16,7 +16,7 @@ Steps to reproduce the analysis in this paper:
 
 3) Also inside the project folder, create three sub-folders named (exactly) ``Code``, ``Plots``, and ``Data``
 
-4) Inside the ``Data`` folder, put the file ``Manu_perceptions_11sep18.csv``
+4) Inside the ``Data`` folder, put the file ``Manu_perceptions_28aug20.csv``
 
 5) Inside the ``Code`` folder, put all the other files.
 
