@@ -251,15 +251,15 @@ names(d)[c(length(names(d))-2, length(names(d))-1, length(names(d)))] <- c("resp
 
 
 
-#######################################remove people with NA predictors
+#######################################remove people with NA predictors for the predictors in this analysis: EdMes and EmpMat
 
 #get row indices with NAs
 na.rows <- 0
 for (n in 1:N) {
-	for (p in 1:dim(d)[2]) {
-		if ( is.na(d[n,p]) ) na.rows <- c(na.rows, n)
-	}
+	if ( is.na(d[n,"EdMes"]) || is.na(d[n,"EmpMat"])) na.rows <- c(na.rows, n)
 }
+
+
 na.rows <- unique(na.rows[-1]) #get rid of initial 0
 # d[c(112:152, 1265:1280, 1538:1553, 4748:4763), #look at NA rows
 # 	c("ID", "Machi",

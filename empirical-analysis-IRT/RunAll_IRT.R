@@ -9,8 +9,9 @@ library(grid)
 library(boot)      #for inverse logit function
 
 # Set local directory: the path to the folder containing the subfolders Code, Plots, and Data
-#setwd("C:/Users/jabunce/Dropbox/Matsigenka-Mestizo_project_2014/perception_analysis/xcult_dynamics/R_scripts/xcult_comp_dynamics_IRT_1sep20")
-setwd("~/Manu_perceptions")
+setwd("/Users/johnbunce/Dropbox/Matsigenka-Mestizo_project_2014/perception_analysis/xcult_dynamics/R_scripts/xcult_comp_dynamics_IRT_git_7sep20")
+#setwd("C:/Users/jabunce/Dropbox/Matsigenka-Mestizo_project_2014/perception_analysis/xcult_dynamics/R_scripts/xcult_comp_dynamics_IRT_git_7sep20")
+#setwd("~/Manu_perceptions")
 
 # Load helper functions
 source("./Code/Functions_IRT.R")

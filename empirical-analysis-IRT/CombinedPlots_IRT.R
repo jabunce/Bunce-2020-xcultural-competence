@@ -794,186 +794,186 @@ graphics.off()
 
 
 
-# #################################################################
-# # plot combined with mathematica output
+#################################################################
+# plot combined with mathematica output
 
-# library(grConvert) #only works on Mac
-# #first install required libraries, opening a new terminal window (not R) type: sudo port install cairo-devel poppler libspectre librsvg
-# #then install grConvert in R: devtools::install_github("sjp/grConvert") 
+library(grConvert) #only works on Mac
+#first install required libraries, opening a new terminal window (not R) type: sudo port install cairo-devel poppler libspectre librsvg
+#then install grConvert in R: devtools::install_github("sjp/grConvert") 
 
-# library(grImport2)
-# #first install required packages: install.packages(c("XML", "png", "jpeg", "base64enc"))
-# #then: devtools::install_github("sjp/grImport2")
+library(grImport2)
+#first install required packages: install.packages(c("XML", "png", "jpeg", "base64enc"))
+#then: devtools::install_github("sjp/grImport2")
 
-# library(gridBase) #combine base and grid graphics
-# #install.packages("gridBase")
-
-
-# # import mathematica pdf as svg
-# convertPicture("./Plots/FigureTrajD.pdf", "./Plots/FigureTrajD.svg")
-# image2 <- readPicture("./Plots/FigureTrajD.svg")
-# grid.picture(image2)
+library(gridBase) #combine base and grid graphics
+#install.packages("gridBase")
 
 
+# import mathematica pdf as svg
+convertPicture("./Plots/FigureTrajD.pdf", "./Plots/FigureTrajD.svg")
+image2 <- readPicture("./Plots/FigureTrajD.svg")
+grid.picture(image2)
 
 
-# pdf(file="./Plots/pheno_dens_reduc_plus_IRT.pdf", 
-# height=8, width=5)
-# layout( matrix(c(1,2,3,4,5,5,5,5), 4, 2, byrow = TRUE), respect=TRUE)
-# par(mar = c(2, 0, 2, 0), oma = c(5, 4, 4, 4)) #margins for indiv plot, oma for outer margins (bottom, left, top, right)
 
 
-# denschart4( split(pheno_q9_ma_plot_reduc, col(pheno_q9_ma_plot_reduc)), #splits the columns of a matrix into a list for plotting
-#       #labels=rev(pheno_names),
-#       labels="",
-#       adjust=1,
-#       color="black",
-#           colorHPDI=c(grey(0.45),"White","Red","Blue"),
-#           polyborder=c(NA, "Black", NA, NA),
-#           HPDI=0.9,
-#           border=NA, yaxt="n",
-#           cex=0.8, height=0.7,
-#           xlim=range( 0, 1),
-#           hline=c(0.25,0.5,0.75),
-#           hlinelwd=c(0.75,1.25,0.75)  
-#  )
-# axis(side=1, #y
-#   col="white",
-#   at=c(1:ncol(pheno_q9_ma_plot_reduc)), 
-#   labels=c(" "," "," "," "), las=1, cex.axis=1) #left
-# axis(side=2, at=c(0,0.25,0.5,0.75,1), labels=c(0,0.25,0.5,0.75,1), cex.axis=0.75, las=1)
-# lines(x=list( y=c(0,0), x=c(-0.2,14.5) ), lty=1, lwd=0.75)
-# lines(x=list( y=c(0.25,0.25), x=c(-0.2,0.05) ), lty=2, lwd=0.75)
-# lines(x=list( y=c(0.75,0.75), x=c(-0.2,0.05) ), lty=2, lwd=0.75)
-# lines(x=list( y=c(0.5,0.5), x=c(-0.2,0.05) ), lty=2, lwd=1.25)
-
-# #raw proportions
-# lines(x=list( y=c(pA11_all/denom_ma_raw, pA11_all/denom_ma_raw), x=c(0.7,1.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pA22_all/denom_ma_raw, pA22_all/denom_ma_raw), x=c(1.7,2.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pA1X_all/denom_ma_raw, pA1X_all/denom_ma_raw), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pA2X_all/denom_ma_raw, pA2X_all/denom_ma_raw), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
-
-# mtext(side=3, line=0.5, adj=0.5, text="All Matsigenka", cex=0.8)
-# mtext(side=2, line=3, adj=0.5, text="Frequency", cex=0.75)
-
-# mtext(side=3, line=1.5, adj=-0.5, text="A", cex=1.5)
+pdf(file="./Plots/pheno_dens_reduc_plus_IRT.pdf", 
+height=8, width=5)
+layout( matrix(c(1,2,3,4,5,5,5,5), 4, 2, byrow = TRUE), respect=TRUE)
+par(mar = c(2, 0, 2, 0), oma = c(5, 4, 4, 4)) #margins for indiv plot, oma for outer margins (bottom, left, top, right)
 
 
-# denschart4( split(pheno_q9_me_plot_reduc, col(pheno_q9_me_plot_reduc)), #splits the columns of a matrix into a list for plotting
-#       #labels=rev(pheno_names),
-#       labels="",
-#       adjust=1,
-#       color="black",
-#           colorHPDI=c(grey(0.45),"White","Red","Blue"),
-#           polyborder=c(NA, "Black", NA, NA),
-#           HPDI=0.9,
-#           border=NA, yaxt="n",
-#           cex=0.8, height=0.7,
-#           xlim=range( 0, 1),
-#           hline=c(0.25,0.5,0.75),
-#           hlinelwd=c(0.75,1.25,0.75)  
-#  )
-# #text(x=0.5, y=15, labels="Mats Ego", cex=0.75)
-# axis(side=1, #y
-#   col="white",
-#   at=c(1:ncol(pheno_q9_me_plot_reduc)), 
-#   labels=c(" "," "," "," "), las=1, cex.axis=1) #left
-# #axis(side=2, at=c(0,0.25,0.5,0.75,1), labels=c(0,0.25,0.5,0.75,1), cex.axis=0.75) #x
-# lines(x=list( y=c(0,0), x=c(-0.2,14.5) ), lty=1, lwd=0.75)
-# #lines(x=list( y=c(0.25,0.25), x=c(-0.2,0) ), lty=2, lwd=0.75)
-# #lines(x=list( y=c(0.75,0.75), x=c(-0.2,0) ), lty=2, lwd=0.75)
-# #lines(x=list( y=c(0.5,0.5), x=c(-0.2,0) ), lty=2, lwd=1.25)
+denschart4( split(pheno_q9_ma_plot_reduc, col(pheno_q9_ma_plot_reduc)), #splits the columns of a matrix into a list for plotting
+      #labels=rev(pheno_names),
+      labels="",
+      adjust=1,
+      color="black",
+          colorHPDI=c(grey(0.45),"White","Red","Blue"),
+          polyborder=c(NA, "Black", NA, NA),
+          HPDI=0.9,
+          border=NA, yaxt="n",
+          cex=0.8, height=0.7,
+          xlim=range( 0, 1),
+          hline=c(0.25,0.5,0.75),
+          hlinelwd=c(0.75,1.25,0.75)  
+ )
+axis(side=1, #y
+  col="white",
+  at=c(1:ncol(pheno_q9_ma_plot_reduc)), 
+  labels=c(" "," "," "," "), las=1, cex.axis=1) #left
+axis(side=2, at=c(0,0.25,0.5,0.75,1), labels=c(0,0.25,0.5,0.75,1), cex.axis=0.75, las=1)
+lines(x=list( y=c(0,0), x=c(-0.2,14.5) ), lty=1, lwd=0.75)
+lines(x=list( y=c(0.25,0.25), x=c(-0.2,0.05) ), lty=2, lwd=0.75)
+lines(x=list( y=c(0.75,0.75), x=c(-0.2,0.05) ), lty=2, lwd=0.75)
+lines(x=list( y=c(0.5,0.5), x=c(-0.2,0.05) ), lty=2, lwd=1.25)
 
-# #raw proportions
-# lines(x=list( y=c(pB11_all/denom_me_raw, pB11_all/denom_me_raw), x=c(0.7,1.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pB22_all/denom_me_raw, pB22_all/denom_me_raw), x=c(1.7,2.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pB1X_all/denom_me_raw, pB1X_all/denom_me_raw), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pB2X_all/denom_me_raw, pB2X_all/denom_me_raw), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
+#raw proportions
+lines(x=list( y=c(pA11_all/denom_ma_raw, pA11_all/denom_ma_raw), x=c(0.7,1.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pA22_all/denom_ma_raw, pA22_all/denom_ma_raw), x=c(1.7,2.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pA1X_all/denom_ma_raw, pA1X_all/denom_ma_raw), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pA2X_all/denom_ma_raw, pA2X_all/denom_ma_raw), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
 
-# mtext(side=3, line=0.5, adj=0.5, text="All Mestizos", cex=0.8)
+mtext(side=3, line=0.5, adj=0.5, text="All Matsigenka", cex=0.8)
+mtext(side=2, line=3, adj=0.5, text="Frequency", cex=0.75)
 
-
-# denschart4( split(pheno_q9_ma_edu_plot_reduc, col(pheno_q9_ma_edu_plot_reduc)), #splits the columns of a matrix into a list for plotting
-#       #labels=rev(pheno_names),
-#       labels="",
-#       adjust=1,
-#       color="black",
-#           colorHPDI=c(grey(0.45),"White","Red","Blue"),
-#           polyborder=c(NA, "Black", NA, NA),
-#           HPDI=0.9,
-#           border=NA, yaxt="n",
-#           cex=0.8, height=0.7,
-#           xlim=range( 0, 1),
-#           hline=c(0.25,0.5,0.75),
-#           hlinelwd=c(0.75,1.25,0.75)  
-#  )
-# #text(x=0.5, y=15, labels="Mats Ego", cex=0.75)
-# axis(side=1, #y
-#   col="white",
-#   at=c(1:ncol(pheno_q9_ma_edu_plot_reduc)), 
-#   labels=pheno_names_ma_edu_plot_reduc, las=1, cex.axis=0.85) #left
-# axis(side=2, at=c(0,0.25,0.5,0.75,1), labels=c(0,0.25,0.5,0.75,1), cex.axis=0.75, las=1) #x
-# lines(x=list( y=c(0,0), x=c(-0.2,14.5) ), lty=1, lwd=0.75)
-# #lines(x=list( y=c(0.25,0.25), x=c(-0.2,14.5) ), lty=2, lwd=0.75)
-# #lines(x=list( y=c(0.75,0.75), x=c(-0.2,14.5) ), lty=2, lwd=0.75)
-# #lines(x=list( y=c(0.5,0.5), x=c(-0.2,14.5) ), lty=2, lwd=1.25)
-
-# #raw proportions
-# lines(x=list( y=c(pA11_edu/denom_ma_edu, pA11_edu/denom_ma_edu), x=c(0.7,1.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pA22_edu/denom_ma_edu, pA22_edu/denom_ma_edu), x=c(1.7,2.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pA1X_edu/denom_ma_edu, pA1X_edu/denom_ma_edu), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pA2X_edu/denom_ma_edu, pA2X_edu/denom_ma_edu), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
-
-# mtext(side=3, line=0.5, adj=0.05, text="Matsigenka educated with Mestizos", cex=0.6)
-# mtext(side=2, line=3, adj=0.5, text="Frequency", cex=0.75)
+mtext(side=3, line=1.5, adj=-0.5, text="A", cex=1.5)
 
 
-# denschart4( split(pheno_q9_me_emp_plot_reduc, col(pheno_q9_me_emp_plot_reduc)), #splits the columns of a matrix into a list for plotting
-#       #labels=rev(pheno_names),
-#       labels="",
-#       adjust=1,
-#       color="black",
-#           colorHPDI=c(grey(0.45),"White","Red","Blue"),
-#           polyborder=c(NA, "Black", NA, NA),
-#           HPDI=0.9,
-#           border=NA, yaxt="n",
-#           cex=0.8, height=0.7,
-#           xlim=range( 0, 1),
-#           hline=c(0.25,0.5,0.75),
-#           hlinelwd=c(0.75,1.25,0.75) 
-#  )
-# #text(x=0.5, y=15, labels="Mats Ego", cex=0.75)
-# axis(side=1, #y
-#   col="white",
-#   at=c(1:ncol(pheno_q9_me_emp_plot_reduc)), 
-#   labels=pheno_names_me_emp_plot_reduc, las=1, cex.axis=0.85) #left
-# #axis(side=2, at=c(0,0.25,0.5,0.75,1), labels=c(0,0.25,0.5,0.75,1), cex.axis=0.75) #x
-# lines(x=list( y=c(0,0), x=c(-0.2,14.5) ), lty=1, lwd=0.75)
-# #lines(x=list( y=c(0.25,0.25), x=c(-0.2,0) ), lty=2, lwd=0.75)
-# #lines(x=list( y=c(0.75,0.75), x=c(-0.2,0) ), lty=2, lwd=0.75)
-# #lines(x=list( y=c(0.5,0.5), x=c(-0.2,0) ), lty=2, lwd=1.25)
+denschart4( split(pheno_q9_me_plot_reduc, col(pheno_q9_me_plot_reduc)), #splits the columns of a matrix into a list for plotting
+      #labels=rev(pheno_names),
+      labels="",
+      adjust=1,
+      color="black",
+          colorHPDI=c(grey(0.45),"White","Red","Blue"),
+          polyborder=c(NA, "Black", NA, NA),
+          HPDI=0.9,
+          border=NA, yaxt="n",
+          cex=0.8, height=0.7,
+          xlim=range( 0, 1),
+          hline=c(0.25,0.5,0.75),
+          hlinelwd=c(0.75,1.25,0.75)  
+ )
+#text(x=0.5, y=15, labels="Mats Ego", cex=0.75)
+axis(side=1, #y
+  col="white",
+  at=c(1:ncol(pheno_q9_me_plot_reduc)), 
+  labels=c(" "," "," "," "), las=1, cex.axis=1) #left
+#axis(side=2, at=c(0,0.25,0.5,0.75,1), labels=c(0,0.25,0.5,0.75,1), cex.axis=0.75) #x
+lines(x=list( y=c(0,0), x=c(-0.2,14.5) ), lty=1, lwd=0.75)
+#lines(x=list( y=c(0.25,0.25), x=c(-0.2,0) ), lty=2, lwd=0.75)
+#lines(x=list( y=c(0.75,0.75), x=c(-0.2,0) ), lty=2, lwd=0.75)
+#lines(x=list( y=c(0.5,0.5), x=c(-0.2,0) ), lty=2, lwd=1.25)
 
-# #raw proportions
-# lines(x=list( y=c(pB11_emp/denom_me_emp, pB11_emp/denom_me_emp), x=c(0.7,1.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pB22_emp/denom_me_emp, pB22_emp/denom_me_emp), x=c(1.7,2.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pB1X_emp/denom_me_emp, pB1X_emp/denom_me_emp), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
-# lines(x=list( y=c(pB2X_emp/denom_me_emp, pB2X_emp/denom_me_emp), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
+#raw proportions
+lines(x=list( y=c(pB11_all/denom_me_raw, pB11_all/denom_me_raw), x=c(0.7,1.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pB22_all/denom_me_raw, pB22_all/denom_me_raw), x=c(1.7,2.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pB1X_all/denom_me_raw, pB1X_all/denom_me_raw), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pB2X_all/denom_me_raw, pB2X_all/denom_me_raw), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
 
-# mtext(side=3, line=0.5, adj=0.2, text="Mestizo employers of Matsigenka", cex=0.6)
+mtext(side=3, line=0.5, adj=0.5, text="All Mestizos", cex=0.8)
 
 
-# plot.new() #advance to the next space for a figure in layout matrix 
-# vps <- baseViewports()
-# pushViewport(vps$figure) #place viewport in figure region, options: vps$inner, vps$figure, vps$plot
-# vp1 <-plotViewport(margins=c(-2, -2, -2, 0.4)) #margin spacings are in lines of text: bottom, left, top, right
-# pushViewport(vp1) #place another viewport inside the figure viewport, whose size can be modified with margins
-# grid.lines(x = c(0.05,0.95), y = 0.9, gp = gpar(col = "black", lwd=3))
-# grid.picture(image2)
-# popViewport(2) #pop back out of the viewports
+denschart4( split(pheno_q9_ma_edu_plot_reduc, col(pheno_q9_ma_edu_plot_reduc)), #splits the columns of a matrix into a list for plotting
+      #labels=rev(pheno_names),
+      labels="",
+      adjust=1,
+      color="black",
+          colorHPDI=c(grey(0.45),"White","Red","Blue"),
+          polyborder=c(NA, "Black", NA, NA),
+          HPDI=0.9,
+          border=NA, yaxt="n",
+          cex=0.8, height=0.7,
+          xlim=range( 0, 1),
+          hline=c(0.25,0.5,0.75),
+          hlinelwd=c(0.75,1.25,0.75)  
+ )
+#text(x=0.5, y=15, labels="Mats Ego", cex=0.75)
+axis(side=1, #y
+  col="white",
+  at=c(1:ncol(pheno_q9_ma_edu_plot_reduc)), 
+  labels=pheno_names_ma_edu_plot_reduc, las=1, cex.axis=0.85) #left
+axis(side=2, at=c(0,0.25,0.5,0.75,1), labels=c(0,0.25,0.5,0.75,1), cex.axis=0.75, las=1) #x
+lines(x=list( y=c(0,0), x=c(-0.2,14.5) ), lty=1, lwd=0.75)
+#lines(x=list( y=c(0.25,0.25), x=c(-0.2,14.5) ), lty=2, lwd=0.75)
+#lines(x=list( y=c(0.75,0.75), x=c(-0.2,14.5) ), lty=2, lwd=0.75)
+#lines(x=list( y=c(0.5,0.5), x=c(-0.2,14.5) ), lty=2, lwd=1.25)
 
-# mtext(side=3, line=-2, adj=-0.16, text="B", cex=1.5)
+#raw proportions
+lines(x=list( y=c(pA11_edu/denom_ma_edu, pA11_edu/denom_ma_edu), x=c(0.7,1.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pA22_edu/denom_ma_edu, pA22_edu/denom_ma_edu), x=c(1.7,2.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pA1X_edu/denom_ma_edu, pA1X_edu/denom_ma_edu), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pA2X_edu/denom_ma_edu, pA2X_edu/denom_ma_edu), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
 
-# graphics.off()
+mtext(side=3, line=0.5, adj=0.05, text="Matsigenka educated with Mestizos", cex=0.6)
+mtext(side=2, line=3, adj=0.5, text="Frequency", cex=0.75)
+
+
+denschart4( split(pheno_q9_me_emp_plot_reduc, col(pheno_q9_me_emp_plot_reduc)), #splits the columns of a matrix into a list for plotting
+      #labels=rev(pheno_names),
+      labels="",
+      adjust=1,
+      color="black",
+          colorHPDI=c(grey(0.45),"White","Red","Blue"),
+          polyborder=c(NA, "Black", NA, NA),
+          HPDI=0.9,
+          border=NA, yaxt="n",
+          cex=0.8, height=0.7,
+          xlim=range( 0, 1),
+          hline=c(0.25,0.5,0.75),
+          hlinelwd=c(0.75,1.25,0.75) 
+ )
+#text(x=0.5, y=15, labels="Mats Ego", cex=0.75)
+axis(side=1, #y
+  col="white",
+  at=c(1:ncol(pheno_q9_me_emp_plot_reduc)), 
+  labels=pheno_names_me_emp_plot_reduc, las=1, cex.axis=0.85) #left
+#axis(side=2, at=c(0,0.25,0.5,0.75,1), labels=c(0,0.25,0.5,0.75,1), cex.axis=0.75) #x
+lines(x=list( y=c(0,0), x=c(-0.2,14.5) ), lty=1, lwd=0.75)
+#lines(x=list( y=c(0.25,0.25), x=c(-0.2,0) ), lty=2, lwd=0.75)
+#lines(x=list( y=c(0.75,0.75), x=c(-0.2,0) ), lty=2, lwd=0.75)
+#lines(x=list( y=c(0.5,0.5), x=c(-0.2,0) ), lty=2, lwd=1.25)
+
+#raw proportions
+lines(x=list( y=c(pB11_emp/denom_me_emp, pB11_emp/denom_me_emp), x=c(0.7,1.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pB22_emp/denom_me_emp, pB22_emp/denom_me_emp), x=c(1.7,2.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pB1X_emp/denom_me_emp, pB1X_emp/denom_me_emp), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
+lines(x=list( y=c(pB2X_emp/denom_me_emp, pB2X_emp/denom_me_emp), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
+
+mtext(side=3, line=0.5, adj=0.2, text="Mestizo employers of Matsigenka", cex=0.6)
+
+
+plot.new() #advance to the next space for a figure in layout matrix 
+vps <- baseViewports()
+pushViewport(vps$figure) #place viewport in figure region, options: vps$inner, vps$figure, vps$plot
+vp1 <-plotViewport(margins=c(-2, -2, -2, 0.4)) #margin spacings are in lines of text: bottom, left, top, right
+pushViewport(vp1) #place another viewport inside the figure viewport, whose size can be modified with margins
+grid.lines(x = c(0.05,0.95), y = 0.9, gp = gpar(col = "black", lwd=3))
+grid.picture(image2)
+popViewport(2) #pop back out of the viewports
+
+mtext(side=3, line=-2, adj=-0.16, text="B", cex=1.5)
+
+graphics.off()
 
 
 
