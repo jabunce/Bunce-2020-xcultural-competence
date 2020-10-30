@@ -9,9 +9,9 @@ library(grid)
 library(boot)      #for inverse logit function
 
 # Set local directory: the path to the folder containing the subfolders Code, Plots, and Data
-setwd("/Users/johnbunce/Dropbox/Matsigenka-Mestizo_project_2014/perception_analysis/xcult_dynamics/R_scripts/xcult_comp_dynamics_IRT_git_7sep20")
-#setwd("C:/Users/jabunce/Dropbox/Matsigenka-Mestizo_project_2014/perception_analysis/xcult_dynamics/R_scripts/xcult_comp_dynamics_IRT_git_7sep20")
-#setwd("~/Manu_perceptions")
+#setwd("/Users/johnbunce/Dropbox/Matsigenka-Mestizo_project_2014/perception_analysis/xcult_dynamics/R_scripts/xcult_comp_dynamics_IRT_git_29oct20")
+#setwd("C:/Users/jabunce/Dropbox/Matsigenka-Mestizo_project_2014/perception_analysis/xcult_dynamics/R_scripts/xcult_comp_dynamics_IRT_git_29oct20")
+setwd("~/Manu_perceptions")
 
 # Load helper functions
 source("./Code/Functions_IRT.R")
@@ -26,9 +26,9 @@ num_chains <- 4 #number of mcmc chains, change to 2 and it will run faster
 source("./Code/MainStanModels_IRT.R")
 
 #load stan output if you've already fit the models
-#m4 <- readRDS("m4_fit.rds") #to read in stanfit output
-#m5 <- readRDS("m5_fit.rds") #to read in stanfit output
-#m14 <- readRDS("m14_fit.rds") #to read in stanfit output
+#m4 <- readRDS("m4_fit.rds")
+#m5 <- readRDS("m5_fit.rds")
+#m14 <- readRDS("m14_fit.rds")
 
 # Process stan output
 source("./Code/ProcessM4_IRT.R")
