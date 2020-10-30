@@ -111,6 +111,8 @@ for (z in 1:num_samp) {
     pA11 <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
     pA1b <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
     pA1i <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
+    #pA1o <- pA11
+    #pA2i <- pA22
     pA2o <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
     pA2b <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
     pA22 <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
@@ -121,14 +123,16 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)<0.5 and mest mean prob(yes)>0.5
   if ( probs.e.ma.typ[z,k] < 0.5 && probs.e.me.typ[z,k] > 0.5 ) {
 
-    pA1X <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
-    pA2X <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
-    pA11 <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
-    pA1b <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
-    pA1i <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
-    pA2o <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
-    pA2b <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
-    pA22 <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
+    pA1X <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
+    pA2X <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
+    pA11 <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
+    pA1b <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
+    #pA1i <- pA11
+    pA1o <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
+    pA2i <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
+    #pA2o <- pA22
+    pA2b <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
+    pA22 <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
 
   } #if
 
@@ -137,15 +141,15 @@ for (z in 1:num_samp) {
   if ( probs.e.ma.typ[z,k] < 0.5 && probs.e.me.typ[z,k] < 0.5 ) {
 
     pA1X <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
-    pA22 <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
+    #pA2X <- pA22
     pA11 <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
+    #pA1b <- pA11
+    pA1i <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
     pA1o <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
-    pA1i <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])    
-    pA2b <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
-    pA2o <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
     pA2i <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
-    #pA1b=pA11
-    #pA22=pA2X 
+    pA2o <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
+    pA2b <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
+    pA22 <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
 
   } #if
 
@@ -153,13 +157,15 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)>0.5 and mest mean prob(yes)>0.5
   if ( probs.e.ma.typ[z,k] > 0.5 && probs.e.me.typ[z,k] > 0.5 ) {
 
-    pA11 <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
+    #pA1X <- pA11
     pA2X <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
-    pA1o <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
+    pA11 <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * probs.o.ma.ed[z,k]
+    pA1b <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k]) 
     pA1i <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
-    pA1b <- probs.e.ma.ed[z,k] * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])    
-    pA2o <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
+    pA1o <- probs.e.ma.ed[z,k] * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
     pA2i <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * probs.o.ma.ed[z,k]
+    pA2o <- (1-probs.e.ma.ed[z,k]) * probs.i.ma.ed[z,k] * (1-probs.o.ma.ed[z,k])
+    #pA2b <- pA22
     pA22 <- (1-probs.e.ma.ed[z,k]) * (1-probs.i.ma.ed[z,k]) * (1-probs.o.ma.ed[z,k])
 
   } #if

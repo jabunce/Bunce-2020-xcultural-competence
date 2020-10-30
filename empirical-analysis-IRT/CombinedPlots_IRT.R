@@ -752,7 +752,8 @@ lines(x=list( y=c(pA22_edu/denom_ma_edu, pA22_edu/denom_ma_edu), x=c(1.7,2.3) ),
 lines(x=list( y=c(pA1X_edu/denom_ma_edu, pA1X_edu/denom_ma_edu), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
 lines(x=list( y=c(pA2X_edu/denom_ma_edu, pA2X_edu/denom_ma_edu), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
 
-mtext(side=3, line=0.5, adj=0.05, text="Matsigenka educated with Mestizos", cex=0.85)
+mtext(side=3, line=1.25, adj=0.45, text="Matsigenka educated", cex=1)
+mtext(side=3, line=-0.2, adj=0.48, text="with Mestizos", cex=1)
 mtext(side=2, line=3, adj=0.5, text="Frequency", cex=0.75)
 
 
@@ -787,7 +788,8 @@ lines(x=list( y=c(pB22_emp/denom_me_emp, pB22_emp/denom_me_emp), x=c(1.7,2.3) ),
 lines(x=list( y=c(pB1X_emp/denom_me_emp, pB1X_emp/denom_me_emp), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
 lines(x=list( y=c(pB2X_emp/denom_me_emp, pB2X_emp/denom_me_emp), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
 
-mtext(side=3, line=0.5, adj=0.2, text="Mestizo employers of Matsigenka", cex=0.85)
+mtext(side=3, line=1.25, adj=0.45, text="Mestizo employers", cex=1)
+mtext(side=3, line=-0.2, adj=0.48, text="of Matsigenka", cex=1)
 
 graphics.off()
 
@@ -924,7 +926,8 @@ lines(x=list( y=c(pA22_edu/denom_ma_edu, pA22_edu/denom_ma_edu), x=c(1.7,2.3) ),
 lines(x=list( y=c(pA1X_edu/denom_ma_edu, pA1X_edu/denom_ma_edu), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
 lines(x=list( y=c(pA2X_edu/denom_ma_edu, pA2X_edu/denom_ma_edu), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
 
-mtext(side=3, line=0.5, adj=0.05, text="Matsigenka educated with Mestizos", cex=0.6)
+mtext(side=3, line=1.25, adj=0.45, text="Matsigenka educated", cex=0.8)
+mtext(side=3, line=0.1, adj=0.48, text="with Mestizos", cex=0.8)
 mtext(side=2, line=3, adj=0.5, text="Frequency", cex=0.75)
 
 
@@ -959,7 +962,8 @@ lines(x=list( y=c(pB22_emp/denom_me_emp, pB22_emp/denom_me_emp), x=c(1.7,2.3) ),
 lines(x=list( y=c(pB1X_emp/denom_me_emp, pB1X_emp/denom_me_emp), x=c(2.7,3.3) ), lty=1, lwd=3, col="green3")
 lines(x=list( y=c(pB2X_emp/denom_me_emp, pB2X_emp/denom_me_emp), x=c(3.7,4.3) ), lty=1, lwd=3, col="green3")
 
-mtext(side=3, line=0.5, adj=0.2, text="Mestizo employers of Matsigenka", cex=0.6)
+mtext(side=3, line=1.25, adj=0.45, text="Mestizo employers", cex=0.8)
+mtext(side=3, line=0.1, adj=0.48, text="of Matsigenka", cex=0.8)
 
 
 plot.new() #advance to the next space for a figure in layout matrix 
