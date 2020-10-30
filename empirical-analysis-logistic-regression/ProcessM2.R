@@ -107,14 +107,17 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)>0.5 and mest mean prob(yes)<0.5
   if ( probs.e.ma.typ[z] > 0.5 && probs.e.me.typ[z] < 0.5 ) {
 
-    pA1X <- probs.e.ma.ed[z] * probs.i.ma.ed[z] * (1-probs.o.ma.ed[z])
-    pA2X <- (1-probs.e.ma.ed[z]) * probs.i.ma.ed[z] * (1-probs.o.ma.ed[z])
-    pA11 <- probs.e.ma.ed[z] * probs.i.ma.ed[z] * probs.o.ma.ed[z]
-    pA1b <- probs.e.ma.ed[z] * (1-probs.i.ma.ed[z]) * probs.o.ma.ed[z]
-    pA1i <- probs.e.ma.ed[z] * (1-probs.i.ma.ed[z]) * (1-probs.o.ma.ed[z])
-    pA2o <- (1-probs.e.ma.ed[z]) * probs.i.ma.ed[z] * probs.o.ma.ed[z]
-    pA2b <- (1-probs.e.ma.ed[z]) * (1-probs.i.ma.ed[z]) * probs.o.ma.ed[z]
-    pA22 <- (1-probs.e.ma.ed[z]) * (1-probs.i.ma.ed[z]) * (1-probs.o.ma.ed[z])
+    pA1X <- probs.e.ma[z] * probs.i.ma[z] * (1-probs.o.ma[z])
+    pA2X <- (1-probs.e.ma[z]) * probs.i.ma[z] * (1-probs.o.ma[z])
+    pA11 <- probs.e.ma[z] * probs.i.ma[z] * probs.o.ma[z]
+    pA1b <- probs.e.ma[z] * (1-probs.i.ma[z]) * probs.o.ma[z]
+    pA1i <- probs.e.ma[z] * (1-probs.i.ma[z]) * (1-probs.o.ma[z])
+    #pA1o <- pA11
+    #pA2i <- pA22
+    pA2o <- (1-probs.e.ma[z]) * probs.i.ma[z] * probs.o.ma[z]
+    pA2b <- (1-probs.e.ma[z]) * (1-probs.i.ma[z]) * probs.o.ma[z]
+    pA22 <- (1-probs.e.ma[z]) * (1-probs.i.ma[z]) * (1-probs.o.ma[z])
+      
            
   } #if
 
@@ -122,14 +125,17 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)<0.5 and mest mean prob(yes)>0.5
   if ( probs.e.ma.typ[z] < 0.5 && probs.e.me.typ[z] > 0.5 ) {
 
-    pA1X <- (1-probs.e.ma.ed[z]) * (1-probs.i.ma.ed[z]) * probs.o.ma.ed[z]
-    pA2X <- probs.e.ma.ed[z] * (1-probs.i.ma.ed[z]) * probs.o.ma.ed[z]
-    pA11 <- (1-probs.e.ma.ed[z]) * (1-probs.i.ma.ed[z]) * (1-probs.o.ma.ed[z])
-    pA1b <- (1-probs.e.ma.ed[z]) * probs.i.ma.ed[z] * (1-probs.o.ma.ed[z])
-    pA1i <- (1-probs.e.ma.ed[z]) * probs.i.ma.ed[z] * probs.o.ma.ed[z]
-    pA2o <- probs.e.ma.ed[z] * (1-probs.i.ma.ed[z]) * (1-probs.o.ma.ed[z])
-    pA2b <- probs.e.ma.ed[z] * probs.i.ma.ed[z] * (1-probs.o.ma.ed[z])
-    pA22 <- probs.e.ma.ed[z] * probs.i.ma.ed[z] * probs.o.ma.ed[z]
+    pA1X <- probs.e.ma[z] * (1-probs.i.ma[z]) * probs.o.ma[z]
+    pA2X <- (1-probs.e.ma[z]) * (1-probs.i.ma[z]) * probs.o.ma[z]
+    pA11 <- probs.e.ma[z] * probs.i.ma[z] * probs.o.ma[z]
+    pA1b <- probs.e.ma[z] * probs.i.ma[z] * (1-probs.o.ma[z])
+    #pA1i <- pA11
+    pA1o <- probs.e.ma[z] * (1-probs.i.ma[z]) * (1-probs.o.ma[z])
+    pA2i <- (1-probs.e.ma[z]) * probs.i.ma[z] * probs.o.ma[z]
+    #pA2o <- pA22
+    pA2b <- (1-probs.e.ma[z]) * probs.i.ma[z] * (1-probs.o.ma[z])
+    pA22 <- (1-probs.e.ma[z]) * (1-probs.i.ma[z]) * (1-probs.o.ma[z])
+      
 
   } #if
 
@@ -137,16 +143,17 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)<0.5 and mest mean prob(yes)<0.5
   if ( probs.e.ma.typ[z] < 0.5 && probs.e.me.typ[z] < 0.5 ) {
 
-    pA1X <- probs.e.ma.ed[z] * (1-probs.i.ma.ed[z]) * (1-probs.o.ma.ed[z])
-    pA22 <- (1-probs.e.ma.ed[z]) * (1-probs.i.ma.ed[z]) * (1-probs.o.ma.ed[z])
-    pA11 <- probs.e.ma.ed[z] * probs.i.ma.ed[z] * probs.o.ma.ed[z]
-    pA1o <- probs.e.ma.ed[z] * (1-probs.i.ma.ed[z]) * probs.o.ma.ed[z]
-    pA1i <- probs.e.ma.ed[z] * probs.i.ma.ed[z] * (1-probs.o.ma.ed[z])    
-    pA2b <- (1-probs.e.ma.ed[z]) * probs.i.ma.ed[z] * probs.o.ma.ed[z]
-    pA2o <- (1-probs.e.ma.ed[z]) * (1-probs.i.ma.ed[z]) * probs.o.ma.ed[z]
-    pA2i <- (1-probs.e.ma.ed[z]) * probs.i.ma.ed[z] * (1-probs.o.ma.ed[z])
-    #pA1b=pA11
-    #pA22=pA2X 
+    pA1X <- probs.e.ma[z] * (1-probs.i.ma[z]) * (1-probs.o.ma[z])
+    #pA2X <- pA22
+    pA11 <- probs.e.ma[z] * probs.i.ma[z] * probs.o.ma[z]
+    #pA1b <- pA11
+    pA1o <- probs.e.ma[z] * (1-probs.i.ma[z]) * probs.o.ma[z]
+    pA1i <- probs.e.ma[z] * probs.i.ma[z] * (1-probs.o.ma[z])    
+    pA2b <- (1-probs.e.ma[z]) * probs.i.ma[z] * probs.o.ma[z]
+    pA2o <- (1-probs.e.ma[z]) * (1-probs.i.ma[z]) * probs.o.ma[z]
+    pA2i <- (1-probs.e.ma[z]) * probs.i.ma[z] * (1-probs.o.ma[z])
+    pA22 <- (1-probs.e.ma[z]) * (1-probs.i.ma[z]) * (1-probs.o.ma[z])       
+
 
   } #if
 
@@ -154,14 +161,17 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)>0.5 and mest mean prob(yes)>0.5
   if ( probs.e.ma.typ[z] > 0.5 && probs.e.me.typ[z] > 0.5 ) {
 
-    pA11 <- probs.e.ma.ed[z] * probs.i.ma.ed[z] * probs.o.ma.ed[z]
-    pA2X <- (1-probs.e.ma.ed[z]) * probs.i.ma.ed[z] * probs.o.ma.ed[z]
-    pA1o <- probs.e.ma.ed[z] * probs.i.ma.ed[z] * (1-probs.o.ma.ed[z])
-    pA1i <- probs.e.ma.ed[z] * (1-probs.i.ma.ed[z]) * probs.o.ma.ed[z]
-    pA1b <- probs.e.ma.ed[z] * (1-probs.i.ma.ed[z]) * (1-probs.o.ma.ed[z])    
-    pA2o <- (1-probs.e.ma.ed[z]) * probs.i.ma.ed[z] * (1-probs.o.ma.ed[z])
-    pA2i <- (1-probs.e.ma.ed[z]) * (1-probs.i.ma.ed[z]) * probs.o.ma.ed[z]
-    pA22 <- (1-probs.e.ma.ed[z]) * (1-probs.i.ma.ed[z]) * (1-probs.o.ma.ed[z])
+    #pA1X <- pA11
+    pA2X <- (1-probs.e.ma[z]) * probs.i.ma[z] * probs.o.ma[z]
+    pA11 <- probs.e.ma[z] * probs.i.ma[z] * probs.o.ma[z]
+    pA1b <- probs.e.ma[z] * (1-probs.i.ma[z]) * (1-probs.o.ma[z]) 
+    pA1i <- probs.e.ma[z] * (1-probs.i.ma[z]) * probs.o.ma[z]
+    pA1o <- probs.e.ma[z] * probs.i.ma[z] * (1-probs.o.ma[z])
+    pA2i <- (1-probs.e.ma[z]) * (1-probs.i.ma[z]) * probs.o.ma[z]
+    pA2o <- (1-probs.e.ma[z]) * probs.i.ma[z] * (1-probs.o.ma[z])
+    #pA2b <- pA22
+    pA22 <- (1-probs.e.ma[z]) * (1-probs.i.ma[z]) * (1-probs.o.ma[z])
+      
 
   } #if
 
@@ -218,28 +228,32 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)>0.5 and mest mean prob(yes)<0.5
   if ( probs.e.ma.typ[z] > 0.5 && probs.e.me.typ[z] < 0.5 ) {
 
-    pB1X <- probs.e.me.emp[z] * (1-probs.i.me.emp[z]) * probs.o.me.emp[z]
-    pB2X <- (1-probs.e.me.emp[z]) * (1-probs.i.me.emp[z]) * probs.o.me.emp[z]
-    pB11 <- probs.e.me.emp[z] * probs.i.me.emp[z] * probs.o.me.emp[z]
-    pB1b <- probs.e.me.emp[z] * probs.i.me.emp[z] * (1-probs.o.me.emp[z])
-    pB1o <- probs.e.me.emp[z] * (1-probs.i.me.emp[z]) * (1-probs.o.me.emp[z])    
-    pB2i <- (1-probs.e.me.emp[z]) * probs.i.me.emp[z] * probs.o.me.emp[z]
-    pB2b <- (1-probs.e.me.emp[z]) * probs.i.me.emp[z] * (1-probs.o.me.emp[z])
-    pB22 <- (1-probs.e.me.emp[z]) * (1-probs.i.me.emp[z]) * (1-probs.o.me.emp[z])
+    pB1X <- probs.e.me[z] * (1-probs.i.me[z]) * probs.o.me[z]
+    pB2X <- (1-probs.e.me[z]) * (1-probs.i.me[z]) * probs.o.me[z]
+    pB11 <- probs.e.me[z] * probs.i.me[z] * probs.o.me[z]
+    pB1b <- probs.e.me[z] * probs.i.me[z] * (1-probs.o.me[z])
+    #pB1i <- pB11
+    pB1o <- probs.e.me[z] * (1-probs.i.me[z]) * (1-probs.o.me[z])    
+    pB2i <- (1-probs.e.me[z]) * probs.i.me[z] * probs.o.me[z]
+    #pB2o <- pB22
+    pB2b <- (1-probs.e.me[z]) * probs.i.me[z] * (1-probs.o.me[z])
+    pB22 <- (1-probs.e.me[z]) * (1-probs.i.me[z]) * (1-probs.o.me[z])
 
   } #if
 
   #if machi mean prob(yes)<0.5 and mest mean prob(yes)>0.5
   if ( probs.e.ma.typ[z] < 0.5 && probs.e.me.typ[z] > 0.5 ) {
 
-    pB1X <- probs.e.me.emp[z] * probs.i.me.emp[z] * (1-probs.o.me.emp[z])
-    pB2X <- (1-probs.e.me.emp[z]) * probs.i.me.emp[z] * (1-probs.o.me.emp[z])
-    pB11 <- probs.e.me.emp[z] * probs.i.me.emp[z] * probs.o.me.emp[z]
-    pB1b <- probs.e.me.emp[z] * (1-probs.i.me.emp[z]) * probs.o.me.emp[z]
-    pB1i <- probs.e.me.emp[z] * (1-probs.i.me.emp[z]) * (1-probs.o.me.emp[z])      
-    pB2o <- (1-probs.e.me.emp[z]) * probs.i.me.emp[z] * probs.o.me.emp[z]
-    pB2b <- (1-probs.e.me.emp[z]) * (1-probs.i.me.emp[z]) * probs.o.me.emp[z]
-    pB22 <- (1-probs.e.me.emp[z]) * (1-probs.i.me.emp[z]) * (1-probs.o.me.emp[z])
+    pB1X <- probs.e.me[z] * probs.i.me[z] * (1-probs.o.me[z])
+    pB2X <- (1-probs.e.me[z]) * probs.i.me[z] * (1-probs.o.me[z])
+    pB11 <- probs.e.me[z] * probs.i.me[z] * probs.o.me[z]
+    pB1b <- probs.e.me[z] * (1-probs.i.me[z]) * probs.o.me[z]
+    pB1i <- probs.e.me[z] * (1-probs.i.me[z]) * (1-probs.o.me[z])      
+    #pB1o <- pB11
+    #pB2i <- pB22  
+    pB2o <- (1-probs.e.me[z]) * probs.i.me[z] * probs.o.me[z]
+    pB2b <- (1-probs.e.me[z]) * (1-probs.i.me[z]) * probs.o.me[z]
+    pB22 <- (1-probs.e.me[z]) * (1-probs.i.me[z]) * (1-probs.o.me[z])
 
   } #if
 
@@ -247,14 +261,16 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)<0.5 and mest mean prob(yes)<0.5
   if ( probs.e.ma.typ[z] < 0.5 && probs.e.me.typ[z] < 0.5 ) {
 
-    pB1X <- probs.e.me.emp[z] * (1-probs.i.me.emp[z]) * (1-probs.o.me.emp[z])
-    pB22 <- (1-probs.e.me.emp[z]) * (1-probs.i.me.emp[z]) * (1-probs.o.me.emp[z])
-    pB11 <- probs.e.me.emp[z] * probs.i.me.emp[z] * probs.o.me.emp[z]
-    pB1i <- probs.e.me.emp[z] * probs.i.me.emp[z] * (1-probs.o.me.emp[z])
-    pB1o <- probs.e.me.emp[z] * (1-probs.i.me.emp[z]) * probs.o.me.emp[z]     
-    pB2b <- (1-probs.e.me.emp[z]) * probs.i.me.emp[z] * probs.o.me.emp[z]
-    pB2i <- (1-probs.e.me.emp[z]) * probs.i.me.emp[z] * (1-probs.o.me.emp[z])
-    pB2o <- (1-probs.e.me.emp[z]) * (1-probs.i.me.emp[z]) * probs.o.me.emp[z]
+    pB1X <- probs.e.me[z] * (1-probs.i.me[z]) * (1-probs.o.me[z])
+    #pB2X <- pA22
+    pB11 <- probs.e.me[z] * probs.i.me[z] * probs.o.me[z]
+    #pB1b <- pB11
+    pB1i <- probs.e.me[z] * probs.i.me[z] * (1-probs.o.me[z])
+    pB1o <- probs.e.me[z] * (1-probs.i.me[z]) * probs.o.me[z]     
+    pB2i <- (1-probs.e.me[z]) * probs.i.me[z] * (1-probs.o.me[z])
+    pB2o <- (1-probs.e.me[z]) * (1-probs.i.me[z]) * probs.o.me[z]
+    pB2b <- (1-probs.e.me[z]) * probs.i.me[z] * probs.o.me[z]
+    pB22 <- (1-probs.e.me[z]) * (1-probs.i.me[z]) * (1-probs.o.me[z])
 
   } #if
 
@@ -262,14 +278,17 @@ for (z in 1:num_samp) {
   #if machi mean prob(yes)>0.5 and mest mean prob(yes)>0.5
   if ( probs.e.ma.typ[z] > 0.5 && probs.e.me.typ[z] > 0.5 ) {
 
-    pB11 <- probs.e.me.emp[z] * probs.i.me.emp[z] * probs.o.me.emp[z]
-    pB2X <- (1-probs.e.me.emp[z]) * probs.i.me.emp[z] * probs.o.me.emp[z]
-    pB1i <- probs.e.me.emp[z] * (1-probs.i.me.emp[z]) * probs.o.me.emp[z]
-    pB1o <- probs.e.me.emp[z] * probs.i.me.emp[z] * (1-probs.o.me.emp[z])
-    pB1b <- probs.e.me.emp[z] * (1-probs.i.me.emp[z]) * (1-probs.o.me.emp[z])     
-    pB2i <- (1-probs.e.me.emp[z]) * (1-probs.i.me.emp[z]) * probs.o.me.emp[z]
-    pB2o <- (1-probs.e.me.emp[z]) * probs.i.me.emp[z] * (1-probs.o.me.emp[z])
-    pB22 <- (1-probs.e.me.emp[z]) * (1-probs.i.me.emp[z]) * (1-probs.o.me.emp[z])
+    #pB1X <- pB11
+    pB2X <- (1-probs.e.me[z]) * probs.i.me[z] * probs.o.me[z]
+    pB11 <- probs.e.me[z] * probs.i.me[z] * probs.o.me[z]
+    pB1i <- probs.e.me[z] * (1-probs.i.me[z]) * probs.o.me[z]
+    pB1o <- probs.e.me[z] * probs.i.me[z] * (1-probs.o.me[z])
+    pB1b <- probs.e.me[z] * (1-probs.i.me[z]) * (1-probs.o.me[z])     
+    pB2i <- (1-probs.e.me[z]) * (1-probs.i.me[z]) * probs.o.me[z]
+    pB2o <- (1-probs.e.me[z]) * probs.i.me[z] * (1-probs.o.me[z])
+    #pB2b <- pB22
+    pB22 <- (1-probs.e.me[z]) * (1-probs.i.me[z]) * (1-probs.o.me[z])
+  
 
   } #if
 
