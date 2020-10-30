@@ -25,4 +25,3 @@ Steps to reproduce the analysis in this paper:
 Figures in the manuscript and appendix will appear in the ``Plots`` folder.
 
 It can take several hours to run all three models in this analysis to convergence. However, you can get pretty good estimates by using two mcmc chains of 1000 samples each, which should only take a few minutes. ``RunAll_IRT.R`` lets you modify the number of mcmc chains and samples. 
-
