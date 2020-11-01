@@ -22,7 +22,7 @@ Steps to reproduce the analysis in this paper:
 
 6) Open the file ``RunAll.R``. Inside it, you can set the path to your project folder. Then run its parts in order in R.
 
-Figures in the manuscript and appendix will appear in the ``Plots`` folder.
+Figures will appear in the ``Plots`` folder.
 
 It can take several hours to run both models in this analysis to convergence. However, you can get pretty good estimates by using two mcmc chains of 1000 samples each, which should only take a few minutes. ``RunAll.R`` lets you modify the number of mcmc chains and samples. 
 
