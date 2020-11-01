@@ -1,0 +1,267 @@
+#helper functions
+
+
+########################### density plotting function
+
+denschart3 <- function (x, labels = NULL, groups = NULL, gdata = NULL, cex = par("cex"), 
+    pt.cex = cex, bg = par("bg"), 
+    color = "grey20", colorHPDI ="grey60", HPDI=0.9, vline = NULL, polyborder=NA,
+    gcolor = par("fg"), lcolor = "gray", xlim = range(unlist(x)), yvals = 1:length(x), yextra=0.7,
+    main = NULL, xlab = NULL, ylab = NULL, height=0.7 , border=NA, adjust=1, ...) 
+  {
+    opar <- par("mai", "mar", "cex", "yaxs")
+    on.exit(par(opar))
+    par(cex = cex, yaxs = "i")
+    if (!is.list(x)) 
+        stop("'x' must be a list of vectors or matrices")
+    n <- length(x)
+    glabels <- NULL
+    if (is.list(x)) {
+        if (is.null(labels)) 
+            labels <- names(x)
+        if (is.null(labels)) 
+            labels <- as.character(1L:n)
+        labels <- rep_len(labels, n)
+        #if (is.null(groups)) 
+        #    groups <- col(x, as.factor = TRUE)
+        #glabels <- levels(groups)
+    }
+    plot.new()
+    linch <- if (!is.null(labels)) 
+        max(strwidth(labels, "inch"), na.rm = TRUE)
+    else 0
+    if (is.null(glabels)) {
+        ginch <- 0
+        goffset <- 0
+    }
+    else {
+        ginch <- max(strwidth(glabels, "inch"), na.rm = TRUE)
+        goffset <- 0.4
+    }
+    if (!(is.null(labels) && is.null(glabels))) {
+        nmai <- par("mai")
+        nmai[2L] <- nmai[4L] + max(linch + goffset, ginch) + 
+            0.1
+        par(mai = nmai)
+    }
+    if (is.null(groups)) {
+        o <- 1L:n
+        y <- yvals #o    						#vertical spacing
+        ylim <- c(0.2, max(y) + yextra) #n + 1)
+    }
+    else {
+        # sub-groups, so need more rows
+        o <- sort.list(as.numeric(groups), decreasing = TRUE)
+        x <- x[o]
+        groups <- groups[o]
+        color <- rep_len(color, length(groups))[o]
+        lcolor <- rep_len(lcolor, length(groups))[o]
+        offset <- cumsum(c(0, diff(as.numeric(groups)) != 0))
+        y <- 1L:n + 2 * offset
+        ylim <- range(0, y + 2)
+    }
+    plot.window(xlim = xlim, ylim = ylim, log = "")
+    lheight <- par("csi")
+    if (!is.null(labels)) {
+        linch <- max(strwidth(labels, "inch"), na.rm = TRUE)
+        loffset <- (linch + 0.1)/lheight
+        labs <- labels[o]
+        #mtext(labs, side = 2, line = -1 #0.4, #loffset,           #### y-labels
+        #      at = y, adj = 1, 
+        #      col = "black", las = 2, cex = cex, ...)
+        
+        #text(labels=labs, x=-5.2, y=y, pos=2, adj=1)
+    }
+
+    #vertical lines
+    if ( !is.null(vline) ) {
+    	for ( t in 1:length(vline) ) {
+    		lines(x=list( x=c(vline[t],vline[t]), y=c(0,max(y)+0.5) ), lty=2, lwd=0.75)
+    	} # for t
+    } #if
+
+
+    # draw densities at each y offset
+    for ( i in 1:n ) {
+        a <- density( x[[i]] , adjust=adjust )
+        a$y <- a$y/max(a$y) * height + y[i] - 0.3
+        polygon( a$x , a$y , col=color[i] , border=polyborder[i],lwd=2 )
+        Cuts <- HPDI( x[[i]] , HPDI)
+        XX <- a$x[which(a$x > Cuts[1] & a$x < Cuts[2])]
+        YY <- a$y[which(a$x > Cuts[1] & a$x < Cuts[2])]
+        #loXX <- a$x[which(a$x < Cuts[1] )]
+        #loYY <- a$y[which(a$x < Cuts[1] )]
+        #hiXX <- a$x[which(a$x > Cuts[2] )]
+        #hiYY <- a$y[which(a$x > Cuts[2] )]
+        polygon( c(min(XX), XX, max(XX)), c(min(a$y), YY, min(a$y)),
+          col=colorHPDI[i], border=NA )
+        #polygon( c(min(loXX), loXX, max(loXX)), c(min(a$y), loYY, min(a$y)),
+        #  col=color[i], border=NA )
+        #polygon( c(min(hiXX), hiXX, max(hiXX)), c(min(a$y), hiYY, min(a$y)),
+        #  col=color[i], border=NA )
+    }
+
+    if (!is.null(groups)) {
+        gpos <- rev(cumsum(rev(tapply(groups, groups, length)) + 
+            2) - 1)
+        ginch <- max(strwidth(glabels, "inch"), na.rm = TRUE)
+        goffset <- (max(linch + 0.2, ginch, na.rm = TRUE) + 0.1)/lheight
+        mtext(glabels, side = 2, line = goffset, at = gpos, adj = 0, 
+            col = gcolor, las = 2, cex = cex, ...)
+        if (!is.null(gdata)) {
+            abline(h = gpos, lty = "dotted")
+            points(gdata, gpos, pch = gpch, col = gcolor, bg = bg, 
+                cex = pt.cex/cex, ...)
+        }
+    }
+    #axis(side=1, at=c(-6,-4,-2,0,2,4,6))
+    #box()
+    #title(main = main, xlab = xlab, ylab = ylab, ...)
+    invisible()
+}
+
+
+
+##### vertical density distributions
+
+denschart4 <- function (x, labels = NULL, groups = NULL, gdata = NULL, cex = par("cex"), 
+    pt.cex = cex, bg = par("bg"), 
+    color = "grey20", colorHPDI ="grey60", HPDI=0.9, hline = NULL, hlinelwd = 0.75, polyborder=NA,
+    gcolor = par("fg"), lcolor = "gray", xlim = range(unlist(x)), yvals = 1:length(x), yextra=0.7,
+    main = NULL, xlab = NULL, ylab = NULL, height=0.7 , border=NA, adjust=1, ...) 
+  {
+    opar <- par("mai", "mar", "cex", "yaxs")
+    on.exit(par(opar))
+    par(cex = cex, yaxs = "i")
+    if (!is.list(x)) 
+        stop("'x' must be a list of vectors or matrices")
+    n <- length(x)
+    glabels <- NULL
+    if (is.list(x)) {
+        if (is.null(labels)) 
+            labels <- names(x)
+        if (is.null(labels)) 
+            labels <- as.character(1L:n)
+        labels <- rep_len(labels, n)
+        #if (is.null(groups)) 
+        #    groups <- col(x, as.factor = TRUE)
+        #glabels <- levels(groups)
+    }
+    plot.new()
+    linch <- if (!is.null(labels)) 
+        max(strwidth(labels, "inch"), na.rm = TRUE)
+    else 0
+    if (is.null(glabels)) {
+        ginch <- 0
+        goffset <- 0
+    }
+    else {
+        ginch <- max(strwidth(glabels, "inch"), na.rm = TRUE)
+        goffset <- 0.4
+    }
+    if (!(is.null(labels) && is.null(glabels))) {
+        nmai <- par("mai")
+        nmai[2L] <- nmai[4L] + max(linch + goffset, ginch) + 
+            0.1
+        par(mai = nmai)
+    }
+    if (is.null(groups)) {
+        o <- 1L:n
+        y <- yvals #o               #vertical spacing
+        ylim <- c(0.2, max(y) + yextra) #n + 1)
+    }
+
+    plot.window(ylim = xlim, xlim = ylim, log = "")
+    lheight <- par("csi")
+    if (!is.null(labels)) {
+        linch <- max(strwidth(labels, "inch"), na.rm = TRUE)
+        loffset <- (linch + 0.1)/lheight
+        labs <- labels[o]
+        #mtext(labs, side = 2, line = -1 #0.4, #loffset,           #### y-labels
+        #      at = y, adj = 1, 
+        #      col = "black", las = 2, cex = cex, ...)
+        
+        #text(labels=labs, x=-5.2, y=y, pos=2, adj=1)
+    }
+
+    #horizontal lines
+    if ( !is.null(hline) ) {
+      for ( t in 1:length(hline) ) {
+        lines(x=list( y=c(hline[t],hline[t]), x=c(-2,max(y)+1.5) ), lty=2, lwd=hlinelwd[t])
+      } # for t
+    } #if
+
+
+    # draw densities at each y offset
+    for ( i in 1:n ) {
+        a <- density( x[[i]] , adjust=adjust )
+        a$y <- a$y/max(a$y) * height + y[i] - 0.3
+        polygon( y=a$x , x=a$y , col=color , border=polyborder[i],lwd=1 ) 
+        Cuts <- HPDI( x[[i]] , HPDI)
+        XX <- a$x[which(a$x > Cuts[1] & a$x < Cuts[2])]
+        YY <- a$y[which(a$x > Cuts[1] & a$x < Cuts[2])]
+        polygon( y=c(min(XX), XX, max(XX)), x=c(min(a$y), YY, min(a$y)),
+          col=colorHPDI[i], border=polyborder[i], lwd=1 )
+    }
+
+
+    #axis(side=1, at=c(-6,-4,-2,0,2,4,6))
+    #box()
+    #title(main = main, xlab = xlab, ylab = ylab, ...)
+    invisible()
+}
+
+
+
+
+
+#################### Stan traces printing function
+
+Stan_traces <- function(m = m1){
+    for ( z2 in 1:J ) {
+        for ( z3 in 1:T ) {
+            print(traceplot(m, pars=paste("zInt[", z2, ",", z3, "]", sep=""), inc_warmup=T ))
+        }
+    }
+    for ( z1 in 1:Mach) {
+        for ( z2 in 1:T ) {
+            print(traceplot(m, pars=paste("muInt[", z1, ",", z2, "]", sep=""), inc_warmup=T ))
+        }
+    }
+    for ( z1 in 1:Mach) {
+        for ( z2 in 1:T ) {
+            print(traceplot(m, pars=paste("sigmaInt[", z1, ",", z2, "]", sep=""), inc_warmup=T ))
+        }
+    }
+    for ( z1 in 1:Mach) {
+        for ( z2 in 1:T ) {
+            for ( z3 in 1:T ) {
+                print(traceplot(m, pars=paste("L_R_a[", z1, ",", z2, ",", z3, "]", sep=""), inc_warmup=T ))
+            }
+        }
+    }
+    for ( z2 in 1:(T*2) ) {
+        for ( z3 in 1:K ) {
+            print(traceplot(m, pars=paste("zQuest[", z2, ",", z3, "]", sep=""), inc_warmup=T ))
+        }
+    }
+    for ( z2 in 1:T ){
+        print(traceplot(m, pars=paste("muBeta[", z2, "]", sep=""), inc_warmup=T ))
+    }
+    for ( z3 in 1:T ){
+        print(traceplot(m, pars=paste("muGamma[", z3, "]", sep=""), inc_warmup=T ))
+    }
+    for ( z2 in 1:T ){
+        print(traceplot(m, pars=paste("sigmaBeta[", z2, "]", sep=""), inc_warmup=T ))
+    }
+    for ( z2 in 1:T ){
+        print(traceplot(m, pars=paste("sigmaGamma[", z2, "]", sep=""), inc_warmup=T ))
+    }
+    for ( z2 in 1:(T*2) ) {
+        for ( z3 in 1:(T*2) ) {
+            print(traceplot(m, pars=paste("L_R_q[", z2, ",", z3, "]", sep=""), inc_warmup=T ))
+        }
+    }
+    print(traceplot(m, pars="lp__", inc_warmup=T))
+}
+
