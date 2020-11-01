@@ -128,8 +128,8 @@ graphics.off()
 
 ######### Combined plot using results of m3 and m4, 25 interations of model
 
-str(post3)
-str(post4)
+#str(post3)
+#str(post4)
 
 all_ma_a <- post3$a_constr[,1]
 all_me_a <- post3$a_constr[,2]
