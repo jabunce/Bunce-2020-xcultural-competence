@@ -15,3 +15,5 @@ Analysis of the empirical data using logistic regression in R and Stan is contai
 
 Analysis of the empirical data using item-response theory (IRT) models in R and Stan is contained in the folder ``empirical-analysis-IRT``. Please see the accompanying file ``README-IRT.md`` in that folder. This makes Figure 2A and Appendix Figures S17, S20, and S21.
 
+
+Analysis using the empirical data to estimate values of parameters in the theoretical model, using R and Stan, is contained in the folder ``parameter-estimation``. Please see the accompanying file ``README_parameters.md`` in that folder. This makes Appendix Figures S13 and S14.
