@@ -7,13 +7,13 @@ The original preprint is on SocArXiv [here](https://osf.io/preprints/socarxiv/bw
 
 
 Analysis of the theoretical model is contained in Wolfram Mathematica notebooks available as "Releases" in this repository.
-(Select "Releases" to the right of the screen, and then "Assets".) These make Equations 5-20 in the Appendix, Figures 1 and 2B, and Appendix Figures S3-S9 and S11-S15.
+(Select "Releases" to the right of the screen, and then "Assets".) These make Equations 17-32 in the Appendix, Figures 1b and 2, and Appendix Figures S9-S12, S15-S19, and S21-S25.
 
 
-Analysis of the empirical data using logistic regression in R and Stan is contained in the folder ``empirical-analysis-logistic-regression``. Please see the accompanying file ``README_logreg.md`` in that folder. This makes Appendix Figures S16, S18, and S19.
+Analysis of the empirical data using logistic regression in R and Stan is contained in the folder ``empirical-analysis-logistic-regression``. Please see the accompanying file ``README_logreg.md`` in that folder. This makes Appendix Figures S1, S3, and S4.
 
 
-Analysis of the empirical data using item-response theory (IRT) models in R and Stan is contained in the folder ``empirical-analysis-IRT``. Please see the accompanying file ``README-IRT.md`` in that folder. This makes Figure 2A and Appendix Figures S17, S20, and S21.
+Analysis of the empirical data using item-response theory (IRT) models in R and Stan is contained in the folder ``empirical-analysis-IRT``. Please see the accompanying file ``README-IRT.md`` in that folder. This makes Figure 1A and Appendix Figures S2, S5, and S6.
 
 
 Analysis using the empirical data to estimate values of parameters in the theoretical model, using R and Stan, is contained in the folder ``parameter-estimation``. Please see the accompanying file ``README_parameters.md`` in that folder. This makes Appendix Figures S13 and S14.
