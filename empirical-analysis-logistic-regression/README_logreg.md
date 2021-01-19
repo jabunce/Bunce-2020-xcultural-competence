@@ -1,7 +1,7 @@
 # Bunce-2020-xcultural-competence/empirical-analysis-logistic-regression
 files relating to the manuscript:
 
-Bunce JA (2020). Cultural Diversity in Unequal Societies Sustained Through Cross-Cultural Competence.
+Bunce JA (2020). Cultural Diversity in Unequal Societies Sustained Through Cross-Cultural Competence and Identity Valuation.
 
 The original preprint is on SocArXiv [here](https://osf.io/preprints/socarxiv/bwtvu/)
 
