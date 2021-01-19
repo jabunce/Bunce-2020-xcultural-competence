@@ -5,7 +5,7 @@ Bunce JA (2020). Cultural Diversity in Unequal Societies Sustained Through Cross
 
 The original preprint is on SocArXiv [here](https://osf.io/preprints/socarxiv/bwtvu/)
 
-This analysis uses the empirical data to estimate values of parameters in the theoretical model, corresponding to Appendix Figures S13 and S14.
+This analysis uses the empirical data to estimate values of parameters in the theoretical model, corresponding to Appendix Figures S15 and S16.
 
 
 Steps to reproduce the analysis in this paper:
