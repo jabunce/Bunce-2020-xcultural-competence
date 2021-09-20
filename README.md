@@ -17,3 +17,6 @@ Analysis of the empirical data using item-response theory (IRT) models in R and 
 
 
 Analysis using the empirical data to estimate values of parameters in the theoretical model, using R and Stan, is contained in the folder ``parameter-estimation``. Please see the accompanying file ``README_parameters.md`` in that folder. This makes Appendix Figures A18 and A19.
+
+
+Empirical data included here is provided so that other researchers can check the analyses in the associated manuscript. These data shall not be used for any other purpose unless express permission is granted by John Bunce (john_bunce@eva.mpg.de).
