@@ -5,7 +5,7 @@ Bunce JA (2020). Cultural Diversity in Unequal Societies Sustained Through Cross
 
 The original preprint is on SocArXiv [here](https://osf.io/preprints/socarxiv/bwtvu/)
 
-This is the analysis of the empirical data using logistic regression, corresponding to Appendix Figures S1, S3, and S4.
+This is the analysis of the empirical data using logistic regression, corresponding to Appendix Figures A1, A3, and A4.
 
 
 Steps to reproduce the analysis in this paper:
