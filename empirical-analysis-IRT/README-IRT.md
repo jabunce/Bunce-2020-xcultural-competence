@@ -5,7 +5,7 @@ Bunce JA (2020). Cultural Diversity in Unequal Societies Sustained Through Cross
 
 The original preprint is on SocArXiv [here](https://osf.io/preprints/socarxiv/bwtvu/)
 
-This is the analysis of the empirical data using item-response theory (IRT) models, corresponding to Figure 1A and Appendix Figures S2, S5, and S6.
+This is the analysis of the empirical data using item-response theory (IRT) models, corresponding to Figure 1A and Appendix Figures A2, A5, and A6.
 
 
 Steps to reproduce the analysis in this paper:
