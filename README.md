@@ -1,7 +1,7 @@
 # Bunce-2020-xcultural-competence
 files relating to the manuscript:
 
-Bunce JA (2020). Cultural Diversity in Unequal Societies Sustained Through Cross-Cultural Competence and Identity Valuation.
+Bunce JA (2021). Cultural diversity in unequal societies sustained through cross-cultural competence and identity valuation. Humanities and Social Sciences Communications 8:238. It is open-access and available [here](https://www.nature.com/articles/s41599-021-00916-5) 
 
 The original preprint is on SocArXiv [here](https://osf.io/preprints/socarxiv/bwtvu/)
 
